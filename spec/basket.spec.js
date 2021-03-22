@@ -9,15 +9,27 @@ describe('Checking add and remove methods', function(){
         expect(basket.contents.length).toBe(1);
     })
 
-    it('Checks if bagel if removed from basket.', function(){
+    it('Checks that you cant add an item which is already in the basket', function(){
+        basket = new Basket();
+        bagel = new Bagel('BGLO');
+        basket.addToBasket(bagel);
+        expect(basket.addToBasket(bagel)).toBe(`${bagel.SKU} is already in your basket`);
+    })
+
+    it('Checks if bagel is removed from basket.', function(){
         basket = new Basket();
         bagel = new Bagel('BGLO');
         basket.addToBasket(bagel);
         basket.removeFromBasket(bagel);
         expect(basket.contents.length).toBe(0);
     })
-})
 
+    it('Checks that you cant remove an item which doesnt exist', function(){
+        basket = new Basket();
+        bagel = new Bagel('BGLO');
+        expect(basket.removeFromBasket(bagel)).toBe(`${bagel.SKU} is not in your basket`)
+    })
+})
 
 describe('Checking the capacity of the basket', function(){
     it('Checks if basket is full.', function(){
@@ -29,7 +41,6 @@ describe('Checking the capacity of the basket', function(){
         basket.addToBasket(bagel2);
         basket.addToBasket(bagel3);
         expect(basket.isBasketFull()).toBe(true);
-
     })
 
     it('Checks if capacity has been increased.', function(){
@@ -40,34 +51,6 @@ describe('Checking the capacity of the basket', function(){
 })
 
 
-
-
-
-//TEST 5
-console.log("Item doesn't exist when trying to remove from basket");
-//Setup
-basket = new Basket();
-bagel = new Bagel('salmon');
-
-//Execute
-result = basket.removeFromBasket('salmon');
-
-//Verify
-//assertEquals(result, 'This item is not in your basket');
-
-
-//TEST 6
-console.log("Check if item is already in the basket");
-//Setup
-basket = new Basket();
-bagel = new Bagel();
-
-//Execute
-result = basket.addToBasket('avocado');
-result = basket.addToBasket('avocado');
-
-//Verify
-//assertEquals(result, 'This item is already in your basket');
 
 //TEST 7
 console.log("Check the price of bagel before adding to basket");

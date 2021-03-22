@@ -17,7 +17,7 @@ class Basket {
 
     addToBasket(bagel){
         if(this._contents.includes(bagel)){
-            return 'This item is already in your basket'
+            return `${bagel.SKU} is already in your basket`;
         } else {
             this._contents.push(bagel);
             this._subtotal += bagel.price;
@@ -31,7 +31,7 @@ class Basket {
             this._subtotal -= bagel.price;
             return this._contents;
         } else {
-            return 'This item is not in your basket';
+            return `${bagel.SKU} is not in your basket`;
         }
     }
 
