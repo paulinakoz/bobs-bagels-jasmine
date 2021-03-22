@@ -43,6 +43,16 @@ describe('Checking the capacity of the basket', function(){
         expect(basket.isBasketFull()).toBe(true);
     })
 
+    it('Checks that you cant add items when basket is full', function(){
+        basket = new Basket();
+        bagel = new Bagel('BGLO');
+        bagel2 = new Bagel('BGLE');
+        bagel3 = new Bagel('BGLP');
+        basket.addToBasket(bagel);
+        basket.addToBasket(bagel2);
+        expect(basket.addToBasket(bagel3)).toBe(`Cannot add ${bagel3.name}, basket is full`);
+    })
+
     it('Checks if capacity has been increased.', function(){
         basket = new Basket()
         
