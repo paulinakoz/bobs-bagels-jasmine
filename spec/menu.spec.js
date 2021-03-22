@@ -46,8 +46,6 @@ describe('Testing print menu function', function() {
      })
 })
 
-
-
 describe('Testing menu.removeItem() function', function(){
     it('Removes item from the menu', function(){
         bobsMenu = new Menu('bobs bagels');
@@ -61,11 +59,13 @@ describe('Testing menu.removeItem() function', function(){
     })
 
     it('Cannot remove item.SKU that is not in the menu', function() {
-        bagel3 = new Bagel('BGLO');
-        expect(bobsMenu.removeFromMenu(bagel3)).toBe(`Cannot remove item that is not on the menu`);
+        bobsMenu = new Menu('bobs bagels');
+        bagel = new Bagel('BGLP');
+        bagel2 = new Bagel('BGLO');
+        bobsMenu.addToMenu(bagel);
+        expect(bobsMenu.removeFromMenu(bagel2)).toBe(`Cannot remove item that is not on the menu`);
     })
 })
-
 
 describe('Testing offers class, adding and removing', function(){
     it('Check that you can add an offer to menu', function(){
@@ -74,4 +74,21 @@ describe('Testing offers class, adding and removing', function(){
         result = bobsMenu.addOffer(offer);
         expect(result[0]).toBe(offer);
     })
+
+    it('Check that you can remove an offer from the menu', function(){
+        bobsMenu = new Menu('bobs bagels');
+        offer = new Offer('BGLO', 6, 2.49);
+        offer1 = new Offer('BGLP', 12, 3.99)
+        bobsMenu.addOffer(offer);
+        bobsMenu.addOffer(offer1);
+        expect(bobsMenu.removeOffer(offer1).length).toBe(1);
+    })
+
+    it('Checks displayOffers() function', function(){
+        bobsMenu = new Menu('bobs bagels');
+        offer = new Offer('BGLO', 6, 2.49);
+        bobsMenu.addOffer(offer);
+        expect(bobsMenu.displayOffers()).toBe(`SPECIAL OFFERS\n${offer.SKU} - ${offer.quantity} bagels for ${offer.price}`);
+    })
 })
+

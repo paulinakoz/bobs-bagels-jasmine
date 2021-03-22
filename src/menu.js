@@ -43,11 +43,40 @@ class Menu {
         return output;
     }
 
+    checkOffers(offer) {
+        let includeCheck = 0
+        for(let i = 0; i < this._offers.length; i++) {
+            if(this._offers[i].SKU === offer.SKU) includeCheck ++;
+        }
+        return includeCheck;
+    }
+
     addOffer(offer) {
-        let includeCheck = this.checkInMenu(offer);
+        let includeCheck = this.checkOffers(offer);
         if(includeCheck) return `This offer already exists`
-        this._menuItems.push(offer)
-        return this._menuItems;
+        this._offers.push(offer)
+        return this._offers;
+    }
+
+    removeOffer(offer) {
+        let includeCheck = this.checkOffers(offer);
+        if(includeCheck) {
+            this._offers.splice(this._offers.indexOf(offer), 1)
+            return this._offers;
+        }
+        return `Cannot remove offer that is not on the menu`;
+    }
+
+    displayOffers(){
+        if(this._offers.length === 0){
+            return 'Sorry! There are no special offers';
+        } else {
+            let output = `SPECIAL OFFERS`
+            this._offers.forEach(offer => {
+                output += `\n${offer.SKU} - ${offer.quantity} bagels for ${offer.price}`;
+            })
+        return output;
+        }
     }
 }
 
