@@ -51,31 +51,20 @@ describe('Checking the capacity of the basket', function(){
 })
 
 
+describe('Checks prices of bagels', function(){
+    it('Check the price of bagel before adding to basket', function(){
+        basket = new Basket();
+        bagel = new Bagel('BGLO');
+        expect(basket.addToBasket(bagel)).toBe(`Bagel ${bagel.name} - ${bagel.price}, has been added to your basket`);
 
-//TEST 7
-console.log("Check the price of bagel before adding to basket");
-//Setup
-basket = new Basket();
-bagel = new Bagel('salmon', 3.99);
+    })
+    it('Checks the total sum of the bagels in my basket', function(){
+        basket = new Basket()
+        bagel = new Bagel('BGLO');
+        bagel2 = new Bagel('BGLE')
+        basket.addToBasket(bagel);
+        basket.addToBasket(bagel2);
+        expect(basket.subtotal).toBe(0.98);
 
-//Execute 
-result = basket.addToBasket(bagel);
-
-//Verify
-//assertEquals(result, `Bagel ${bagel.name} - ${bagel.price}, has been added to your basket`)
-
-//TEST 8 
-console.log("Checks the total sum of the bagels in my basket")
-//Setup
-basket = new Basket()
-bagel = new Bagel('salmon', 3.50);
-bagel2 = new Bagel('egg', 2.50)
-
-//Execute
-basket.addToBasket(bagel);
-basket.addToBasket(bagel2);
-
-result = basket.subtotal;
-
-//Verify 
-//assertEquals(result, 6)
+    })
+})
