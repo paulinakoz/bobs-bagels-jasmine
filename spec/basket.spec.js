@@ -19,40 +19,28 @@ describe('Checking add and remove methods', function(){
 })
 
 
+describe('Checking the capacity of the basket', function(){
+    it('Checks if basket is full.', function(){
+        basket = new Basket();
+        bagel = new Bagel('BGLO');
+        bagel2 = new Bagel('BGLE');
+        bagel3 = new Bagel('BGLP');
+        basket.addToBasket(bagel);
+        basket.addToBasket(bagel2);
+        basket.addToBasket(bagel3);
+        expect(basket.isBasketFull()).toBe(true);
 
-//TEST 3 
-console.log('Checks if basket is full.')
-//Setup 
-basket = new Basket();
-bagel = new Bagel('salmon', 3.99);
-bagel2 = new Bagel('salmon', 3.99);
-bagel3 = new Bagel('salmon', 3.99);
-bagel4 = new Bagel('salmon', 3.99);
-bagel5 = new Bagel('salmon', 3.99);
+    })
 
-//Execute
-basket.addToBasket(bagel);
-basket.addToBasket(bagel2);
-basket.addToBasket(bagel3);
-basket.addToBasket(bagel4);
-basket.addToBasket(bagel5);
-
-result = basket.isBasketFull();
-
-//Verify
-//assertEquals(result, true);
+    it('Checks if capacity has been increased.', function(){
+        basket = new Basket()
+        
+        expect(basket.increaseCapacity()).toBe(7);
+    })
+})
 
 
-//TEST 4
-console.log('Checks if capacity has been increased.')
-//Setup
-basket = new Basket()
 
-//Execute
-result = basket.increaseCapacity();
-
-//Verify
-//assertEquals(result, 10)
 
 
 //TEST 5

@@ -3,8 +3,7 @@ let Bagel = require('./bagel.js')
 class Basket {
     constructor(){
         this._contents = [];
-        this.capacity = 5;
-        this.isFull = false;
+        this.capacity = 2;
         this._subtotal = 0;
     }
 
@@ -37,12 +36,7 @@ class Basket {
     }
 
     isBasketFull(){
-        if(this._contents.length === this.capacity){
-            this.isFull = true;
-            return this.isFull;
-        } else {
-            return this.isFull;
-        }
+        return this._contents.length >= this.capacity
     }
 
     increaseCapacity(){
