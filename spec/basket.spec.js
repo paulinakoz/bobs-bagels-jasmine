@@ -27,7 +27,7 @@ describe('Checking add and remove methods', function(){
     it('Checks that you cant remove an item which doesnt exist', function(){
         basket = new Basket();
         bagel = new Bagel('BGLO');
-        expect(basket.removeFromBasket(bagel)).toBe(`${bagel.SKU} is not in your basket`)
+        expect(basket.removeFromBasket(bagel)).toBe(`${bagel.SKU} is not in your basket`);
     })
 })
 
@@ -54,8 +54,7 @@ describe('Checking the capacity of the basket', function(){
     })
 
     it('Checks if capacity has been increased.', function(){
-        basket = new Basket()
-        
+        basket = new Basket();
         expect(basket.increaseCapacity()).toBe(7);
     })
 })
@@ -69,7 +68,7 @@ describe('Checks prices of bagels', function(){
 
     })
     it('Checks the total sum of the bagels in my basket', function(){
-        basket = new Basket()
+        basket = new Basket();
         bagel = new Bagel('BGLO');
         bagel2 = new Bagel('BGLE')
         basket.addToBasket(bagel);

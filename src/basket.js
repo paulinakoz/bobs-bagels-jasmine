@@ -16,7 +16,7 @@ class Basket {
     }
 
     addToBasket(bagel){
-        if(!this.isBasketFull())
+        if(!this.isBasketFull()){
             if(this._contents.includes(bagel)){
                 return `${bagel.SKU} is already in your basket`;
             } else {
@@ -24,15 +24,14 @@ class Basket {
                 this._subtotal += bagel.price;
                 return `Bagel ${bagel.name} - ${bagel.price}, has been added to your basket`;
             }
-        else {
+        } else {
             return `Cannot add ${bagel.name}, basket is full`;
         }
     }
 
     removeFromBasket(bagel){
         if(this._contents.includes(bagel)){
-            const index = this._contents.indexOf(bagel)
-            this._contents.splice(index, 1);
+            this._contents.splice(this._contents.indexOf(bagel), 1);
             this._subtotal -= bagel.price;
             return this._contents;
         } else {
@@ -41,7 +40,7 @@ class Basket {
     }
 
     isBasketFull(){
-        return this._contents.length >= this.capacity
+        return this._contents.length >= this.capacity;
     }
 
     increaseCapacity(){

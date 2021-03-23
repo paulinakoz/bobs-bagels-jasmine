@@ -26,18 +26,18 @@ describe('Testing print menu function', function() {
         bobsMenu = new Menu('bobs bagels');
         bagel = new Bagel('BGLO');
         bobsMenu.addToMenu(bagel);
-        expect(bobsMenu.printMenu()).toBe(`BOBS BAGELS MENU\n${bagel.SKU} - ${bagel.name} - ${bagel.price}`)
+        expect(bobsMenu.printMenu()).toBe(`BOBS BAGELS MENU\n${bagel.SKU} - ${bagel.name} - ${bagel.price}`);
     })
 
     it('Check that every item in the menu is printed', function(){
         bobsMenu = new Menu('bobs bagels');
-        bagel = new Bagel('BGLO')
-        bagel2 = new Bagel('BGLE')
-        bagel3 = new Bagel('BGLP')
-        bobsMenu.addToMenu(bagel)
-        bobsMenu.addToMenu(bagel2)
-        bobsMenu.addToMenu(bagel3)
-        expect(bobsMenu.printMenu()).toBe(`BOBS BAGELS MENU\n${bagel.SKU} - ${bagel.name} - ${bagel.price}\n${bagel2.SKU} - ${bagel2.name} - ${bagel2.price}\n${bagel3.SKU} - ${bagel3.name} - ${bagel3.price}`)
+        bagel = new Bagel('BGLO');
+        bagel2 = new Bagel('BGLE');
+        bagel3 = new Bagel('BGLP');
+        bobsMenu.addToMenu(bagel);
+        bobsMenu.addToMenu(bagel2);
+        bobsMenu.addToMenu(bagel3);
+        expect(bobsMenu.printMenu()).toBe(`BOBS BAGELS MENU\n${bagel.SKU} - ${bagel.name} - ${bagel.price}\n${bagel2.SKU} - ${bagel2.name} - ${bagel2.price}\n${bagel3.SKU} - ${bagel3.name} - ${bagel3.price}`);
     })
 
     it('Doesnt print menu when it is empty', function(){
@@ -78,7 +78,7 @@ describe('Testing offers class, adding and removing', function(){
     it('Check that you can remove an offer from the menu', function(){
         bobsMenu = new Menu('bobs bagels');
         offer = new Offer('BGLO', 6, 2.49);
-        offer1 = new Offer('BGLP', 12, 3.99)
+        offer1 = new Offer('BGLP', 12, 3.99);
         bobsMenu.addOffer(offer);
         bobsMenu.addOffer(offer1);
         expect(bobsMenu.removeOffer(offer1).length).toBe(1);

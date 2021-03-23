@@ -17,14 +17,14 @@ class Menu {
     removeFromMenu(item) {
         let includeCheck = this.checkInMenu(item);
         if(includeCheck) {
-            this._menuItems.splice(this._menuItems.indexOf(item), 1)
+            this._menuItems.splice(this._menuItems.indexOf(item), 1);
             return this._menuItems;
         }
         return `Cannot remove item that is not on the menu`;
     }
 
     checkInMenu(item) {
-        let includeCheck = 0
+        let includeCheck = 0;
         for(let i = 0; i < this._menuItems.length; i++) {
             if(this._menuItems[i].SKU === item.SKU) includeCheck ++;
         }
@@ -44,7 +44,7 @@ class Menu {
     }
 
     checkOffers(offer) {
-        let includeCheck = 0
+        let includeCheck = 0;
         for(let i = 0; i < this._offers.length; i++) {
             if(this._offers[i].SKU === offer.SKU) includeCheck ++;
         }
@@ -53,15 +53,17 @@ class Menu {
 
     addOffer(offer) {
         let includeCheck = this.checkOffers(offer);
-        if(includeCheck) return `This offer already exists`
-        this._offers.push(offer)
+        if(includeCheck) {
+            return `This offer already exists`;
+        }
+        this._offers.push(offer);
         return this._offers;
     }
 
     removeOffer(offer) {
         let includeCheck = this.checkOffers(offer);
         if(includeCheck) {
-            this._offers.splice(this._offers.indexOf(offer), 1)
+            this._offers.splice(this._offers.indexOf(offer), 1);
             return this._offers;
         }
         return `Cannot remove offer that is not on the menu`;
@@ -71,7 +73,7 @@ class Menu {
         if(this._offers.length === 0){
             return 'Sorry! There are no special offers';
         } else {
-            let output = `SPECIAL OFFERS`
+            let output = `SPECIAL OFFERS`;
             this._offers.forEach(offer => {
                 output += `\n${offer.SKU} - ${offer.quantity} bagels for ${offer.price}`;
             })
